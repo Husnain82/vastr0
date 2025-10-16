@@ -1,0 +1,165 @@
+
+{% comment %} {% for block in section.blocks %}
+    {% if block.type == 'paragraph' %}
+        <p>{{ block.settings.textarea }}</p>
+    {% endif %}
+{% endfor %}
+
+<h1>{{ section.settings.text }}</h1>
+
+{% for block in section.blocks %}
+    {% if block.type =='social' %}
+    <a href="{{ block.settings.url }}">{{ block.settings.text }}</a>
+    {% endif %}
+{% endfor %} {% endcomment %}
+
+<section class="custom-section" id="custom-section-{{ section.id }}">
+  <style>
+    #custom-section-{{ section.id }} h1 {
+      color: {{ section.settings.color }};
+    }
+
+    {% for block in section.blocks %}
+      {% if block.type == 'paragraph' %}
+        #custom-section-{{ section.id }} .paragraph-{{ block.id }} {
+          color: {{ block.settings.paragraph-color }};
+          font-size: {{ block.settings.font-size }}px;
+          text-align: {{ block.settings.alignment }};
+          text-transform:{{ block.settings.transform }};
+        }
+      {% endif %}
+    {% endfor %}
+  </style>
+
+  <h1>{{ section.settings.text }}</h1>
+
+  {% for block in section.blocks %}
+    {% if block.type == 'social' %}
+      <a href="{{ block.settings.url }}">{{ block.settings.text }}</a>
+    {% elsif block.type == 'paragraph' %}
+      <p class="paragraph-{{ block.id }}">{{ block.settings.textarea }}</p>
+    {% elsif block.type == '@app' %}
+      {% render block %}
+    {% endif %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Custom Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Custom Section",
+      "settings": {
+        "text": "Default Text"
+      },
+      "blocks": [
+        {
+          "type": "paragraph"
+        },
+        {
+          "type": "social",
+          "settings": {
+            "url": "https://www.yshoo.com",
+            "text": "Twitter"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Red Custom Section",
+      "settings": {
+        "text": "Red Text"
+      }
+    }
+  ],
+  "tag": "header",
+  "class": "custom-section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "name": "Social Links",
+      "type": "social",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    },
+    {
+      "name": "Paragraph",
+      "type": "paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "paragraph-color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "font-size",
+          "label": "Font Size",
+          "min": 12,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Align",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "transform",
+          "label": "Text Transform",
+          "options": [
+            { "value": "lowercase", "label": "Lower case" },
+            { "value": "capitalize", "label": "Capitalize" },
+            { "value": "uppercase", "label": "Upper case" }
+          ],
+          "default": "capitalize"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["custom.special"]
+  }
+}
+{% endschema %}

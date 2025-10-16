@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Special Section",
+  "type": "custom.special",
+  "sections": {
+    "custom_section_4DUgJA": {
+      "type": "custom-section",
+      "blocks": {
+        "paragraph_gbintg": {
+          "type": "paragraph",
+          "settings": {
+            "textarea": "fvrbrtbrgtbrg",
+            "paragraph-color": "#000000",
+            "font-size": 36,
+            "alignment": "center"
+          }
+        },
+        "social_di39aC": {
+          "type": "social",
+          "settings": {
+            "text": "Twitteer",
+            "url": "https://www.yshoo.com"
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_gbintg",
+        "social_di39aC"
+      ],
+      "name": "Default Custom Section",
+      "settings": {
+        "text": "Default Text",
+        "color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "custom_section_4DUgJA"
+  ]
+}
