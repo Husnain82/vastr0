@@ -21,13 +21,15 @@
       blocking="render"
       id="view-transition-render-blocker"
     >
-
+{% comment %} sdvfbgfb {% endcomment %}
     {%- render 'meta-tags' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
-
+  {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}sd s 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
