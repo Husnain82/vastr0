@@ -14,7 +14,7 @@
 {% endfor %} {% endcomment %}
 
 <section class="custom-section" id="custom-section-{{ section.id }}">
-  <style>
+  {% style %} 
     #custom-section-{{ section.id }} h1 {
       color: {{ section.settings.color }};
     }
@@ -29,7 +29,7 @@
         }
       {% endif %}
     {% endfor %}
-  </style>
+   {% endstyle %} 
 
   <h1>{{ section.settings.text }}</h1>
 
