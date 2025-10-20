@@ -14,9 +14,10 @@
 {% endfor %} {% endcomment %}
 
 <section class="custom-section" id="custom-section-{{ section.id }}">
-  {% style %} 
+  <style>
     #custom-section-{{ section.id }} h1 {
       color: {{ section.settings.color }};
+      background-color: {{ section.settings.bg-color }};
     }
 
     {% for block in section.blocks %}
@@ -29,7 +30,7 @@
         }
       {% endif %}
     {% endfor %}
-   {% endstyle %} 
+  </style>
 
   <h1>{{ section.settings.text }}</h1>
 
@@ -58,6 +59,12 @@
       "id": "color",
       "label": "Text Color",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "BAckground Color",
+      "default": "#ffffff"
     }
   ],
   "presets": [
